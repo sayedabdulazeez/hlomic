@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #4f657b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #form-container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 500px;
+      text-align: center;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    label {
+      width: 120px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #416c9a;
+    }
+
+    #thankyou-message {
+      display: none;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="form-container">
+    <form id="userForm">
+      <div class="form-header">
+        <h3>Let me know about you</h3>
+        <p>Please fill in the following details:</p>
+      </div>
+
+      <div class="form-group">
+        <label for="Name">Name:</label>
+        <input type="text" name="name" id="Name" placeholder="Enter your name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phoneno">Mobile No:</label>
+        <input type="tel" name="phone" id="phoneno" placeholder="Enter your mobile number" pattern="[0-9]{10}" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="Address">Address:</label>
+        <textarea name="address" id="Address" placeholder="Enter where you are from" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="purpose">About:</label>
+        <textarea name="purpose" id="purpose" placeholder="Tell me about your purpose or what you expect from me" required></textarea>
+      </div>
+
+      <div class="submit-btn">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <div id="thankyou-message">
+      <h2>Thank you for the visit!</h2>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("userForm").addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent form from refreshing the page
+
+      const phone = document.getElementById("phoneno").value;
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+
+      // Hide the form
+      document.getElementById("userForm").style.display = "none";
+
+      // Show the thank you message
+      document.getElementById("thankyou-message").style.display = "block";
+    });
+  </script>
+
+</body>
+
+</html>
